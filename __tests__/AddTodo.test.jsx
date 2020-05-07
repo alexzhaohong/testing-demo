@@ -29,12 +29,12 @@ describe('Unit Tests', () => {
         const wrapper = shallow(<AddTodo createTodo={() => {}} />);
         wrapper.instance().onChangeHandler = mockChangeHandler;
         wrapper.instance().forceUpdate();
-        wrapper.find('input').simulate('click');
+        wrapper.find('input').simulate('change');
         expect(mockChangeHandler).toHaveBeenCalled();
       });
       test('it should correctly update the state when a change event is emitted', () => {
         const wrapper = shallow(<AddTodo createTodo={() => {}} />);
-        wrapper.find('input').simulate('change', mockEventGenerator('a'));
+        wrapper.find('input').simulate('change', mockEventGenerator('e'));
         expect(wrapper.instance().state.todo).toBe('e');
       });
     });
@@ -44,7 +44,7 @@ describe('Unit Tests', () => {
         const wrapper = shallow(<AddTodo createTodo={() => {}} />);
         wrapper.instance().onSubmitHandler = mockSubmitHandler;
         wrapper.instance().forceUpdate();
-        wrapper.find('form').simulate('click');
+        wrapper.find('form').simulate('submit');
         expect(mockSubmitHandler).toHaveBeenCalled();
       })
     });

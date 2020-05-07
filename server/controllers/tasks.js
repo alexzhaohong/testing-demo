@@ -17,7 +17,7 @@ module.exports = {
     const task = req.body;
     models.tasks.create(task)
       .then((data) => {
-        res.send(201, data);
+        res.status(201).send(data);
       })
       .catch((err) => {
         console.log(err);
